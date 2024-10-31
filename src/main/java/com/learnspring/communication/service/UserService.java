@@ -28,7 +28,7 @@ public class UserService {
         username = username.toLowerCase();
 
         try {
-            return Optional.of(userRepository.findByUsername(username));
+            return userRepository.findByUsername(username);
         } catch (Exception e) {
             return Optional.empty();
         }
@@ -38,7 +38,7 @@ public class UserService {
     public Optional<User> findByemail(String email) {
         email = email.toLowerCase();
         try{
-            return Optional.of(userRepository.findByEmail(email));
+            return userRepository.findByEmail(email);
         }
         catch(Exception e) {
             return Optional.empty();
@@ -47,7 +47,7 @@ public class UserService {
     public Optional<User> deleteUser(User user) {
 
         try{
-            return Optional.of(userRepository.deleteByUsername(user.getUsername()));
+            return userRepository.deleteByUsername(user.getUsername());
         }
         catch(Exception e) {
             return Optional.empty();

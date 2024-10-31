@@ -7,7 +7,7 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
     <h1 class="text-2xl font-bold mb-4">Sign Up</h1>
-    <form th:action="@{/user/signup}" th:object="${signupDto}" method="post">
+    <form th:action="@{/auth/signup}" th:object="${signupDto}" method="post">
         <!-- First Name -->
         <div class="mb-4">
             <label for="firstName" class="block text-sm font-medium text-gray-700">First Name:</label>
