@@ -79,7 +79,7 @@ public class UserController {
                 jwtCookie.setHttpOnly(true);      // Prevents JavaScript access
                 jwtCookie.setSecure(false);        // Ensures cookie is sent only over HTTPS
                 jwtCookie.setPath("/");           // Makes it available to the entire application
-                jwtCookie.setMaxAge(60 * 60 * 24); // Optional: Set cookie expiration (e.g., 1 day)
+                jwtCookie.setMaxAge(3600); // Optional: Set cookie expiration (e.g., 1 hour)
 
                 // Add the cookie to the response
                 response.addCookie(jwtCookie);

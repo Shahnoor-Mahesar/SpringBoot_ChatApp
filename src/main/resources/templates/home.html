@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body>
+<body class="bg-gray-100">
 
-<h1>Hello This is Homepage</h1>
+<div class="flex justify-center items-center h-screen">
+    <div class="flex flex-col w-full max-w-4xl h-[600px] bg-white shadow-lg rounded-lg overflow-hidden">
+
+        <!-- Chat Header -->
+        <div class="bg-blue-600 text-white p-4 text-xl font-semibold">
+            Chat Application
+        </div>
+
+        <div class="flex flex-1">
+            <!-- User List -->
+            <div class="w-1/4 bg-gray-200 p-4 border-r overflow-y-auto">
+                <h2 class="text-lg font-semibold mb-4">Users</h2>
+                <ul>
+                    <li th:each="user : ${users}" class="p-2 mb-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                        <span th:text="${user.name}">User Name</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="flex flex-col w-3/4 p-4">
+                <!-- Messages -->
+                <div class="flex-1 overflow-y-auto mb-4">
+                    <ul>
+                        <li th:each="message : ${messages}" class="mb-2">
+                            <span th:text="${message.sender}" class="font-bold"></span>:
+                            <span th:text="${message.content}"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Message Input -->
+                <div class="border-t pt-4">
+                    <form th:action="@{/send-message}" method="post" class="flex">
+                        <input type="text" name="content" placeholder="Type your message..." class="w-full border rounded p-2 mr-2 focus:outline-none focus:border-blue-500">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

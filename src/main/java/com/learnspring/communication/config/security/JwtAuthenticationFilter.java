@@ -46,7 +46,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
 
-        // Retrieve the JWT token from a cookie
+        String requestURI = request.getRequestURI();
+
+        if (requestURI.equals("/auth/login") ||
+                requestURI.equals("/auth/signup") ||
+                requestURI.endsWith(".css") ||
+                requestURI.endsWith(".js") ||
+                requestURI.endsWith(".png") ||
+                requestURI.endsWith(".jpg") ||
+                requestURI.endsWith(".ico")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+
+
+
         String jwt = null;
         if (request.getCookies() != null) {
             jwt = Arrays.stream(request.getCookies())
@@ -56,19 +71,36 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     .orElse(null);
         }
 
+
+
         if (jwt == null) {
-            filterChain.doFilter(request, response);
+            System.out.println("Null jwt - redirecting to login");
+            request.getRequestDispatcher("/auth/login").forward(request, response);
             return;
         }
 
+
+
         try {
+            System.out.println("inside try");
             final String userEmail = jwtService.extractUsername(jwt);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
             System.out.println("Email or Username: "+ userEmail);
             if (userEmail != null && authentication == null) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
+                System.out.println("Checking Expiry");
+
+                if (jwtService.isTokenExpired(jwt)) {
+                    // Redirect to login if token is expired
+                    System.out.println("Token is expired");
+                    response.sendRedirect("/auth/login");
+                    return;
+                }
+
                 if (jwtService.isTokenValid(jwt, userDetails)) {
+                    System.out.println("Not Expired");
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                             userDetails,
                             null,
@@ -83,6 +115,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (Exception exception) {
             handlerExceptionResolver.resolveException(request, response, null, exception);
+
         }
     }
 
