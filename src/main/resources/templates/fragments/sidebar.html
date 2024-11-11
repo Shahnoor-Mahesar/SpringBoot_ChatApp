@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Iconify Script for Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for the active indicator */
+        .active-indicator {
+            position: relative;
+        }
+
+        .active-indicator::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            height: 40px; /* Adjust height as needed */
+            width: 4px;
+            background-color: #F3B559;
+            border-radius: 0.25rem;
+        }
+    </style>
+    <script>
+        // JavaScript to handle icon selection
+        function selectIcon(button) {
+            // Remove "active-indicator" class from all buttons
+            document.querySelectorAll('.icon-button').forEach(btn => btn.classList.remove('active-indicator'));
+
+            // Add "active-indicator" class to the clicked button
+            button.classList.add('active-indicator');
+        }
+    </script>
+</head>
+<body>
+<!-- Sidebar Container -->
+<div class="bg-purple-700 w-20 flex flex-col items-center py-5 h-screen rounded-xl justify-between">
+
+    <!-- Top Section: Profile Picture -->
+    <div class="flex flex-col items-center mb-6">
+        <img src="https://via.placeholder.com/60" alt="Profile Picture" class="w-14 h-14 rounded-full" />
+    </div>
+
+    <!-- Middle Section: Icons -->
+    <div class="flex flex-col items-center space-y-7 flex-1">
+        <!-- Home Icon Button -->
+        <button onclick="selectIcon(this)" class="icon-button text-white text-3xl cursor-pointer">
+            <iconify-icon icon="mdi:home-outline"></iconify-icon>
+        </button>
+
+        <!-- Chat Icon Button -->
+        <button onclick="selectIcon(this)" class="icon-button text-white text-3xl cursor-pointer">
+            <iconify-icon icon="mdi:chat-outline"></iconify-icon>
+        </button>
+
+        <!-- Notifications Icon Button -->
+        <button onclick="selectIcon(this)" class="icon-button text-white text-3xl cursor-pointer">
+            <iconify-icon icon="mdi:bell-outline"></iconify-icon>
+        </button>
+
+        <!-- Settings Icon Button -->
+        <button onclick="selectIcon(this)" class="icon-button text-white text-3xl cursor-pointer">
+            <iconify-icon icon="mdi:cog-outline"></iconify-icon>
+        </button>
+    </div>
+
+    <!-- Bottom Section: Logout Icon Button -->
+    <div class="flex flex-col items-center mt-6">
+        <button onclick="selectIcon(this)" class="icon-button text-white text-3xl cursor-pointer">
+            <iconify-icon icon="mdi:logout-variant"></iconify-icon>
+        </button>
+    </div>
+</div>
+</body>
+</html>

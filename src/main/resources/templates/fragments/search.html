@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- search-bar.html -->
+<div th:fragment="search-bar" class="flex items-center border-2 border-blue-500 rounded-xl px-3 py-2 w-80 bg-white">
+    <!-- Search Icon -->
+    <iconify-icon icon="mdi:magnify" class="text-gray-500 text-lg mr-2"></iconify-icon>
+
+    <!-- Search Input Field -->
+    <input type="text" placeholder="Search" class="outline-none w-full text-gray-700 placeholder-gray-400" />
+</div>
+
+</body>
+</html>

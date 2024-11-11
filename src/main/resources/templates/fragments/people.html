@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- group-list.html -->
+<div th:fragment="group-list" class="bg-white rounded-lg shadow-md p-5 w-96">
+    <!-- Header -->
+    <h2 class="text-xl font-bold mb-4">People</h2>
+
+    <!-- Group Item -->
+    <div class="space-y-4">
+        <!-- Group 1 -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://via.placeholder.com/40" alt="Friends Forever" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-semibold text-gray-800">Friends Forever</p>
+                    <p class="text-gray-500 text-sm">Hahahahah!</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <p class="text-gray-400 text-sm">Today, 9:52pm</p>
+                <span class="bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">4</span>
+            </div>
+        </div>
+
+        <hr class="my-2 border-gray-300">
+
+        <!-- Group 2 -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://via.placeholder.com/40" alt="Mera Gang" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-semibold text-gray-800">Mera Gang</p>
+                    <p class="text-gray-500 text-sm">Kyuuuu???</p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm">Yesterday, 12:31pm</p>
+        </div>
+
+        <hr class="my-2 border-gray-300">
+
+        <!-- Group 3 -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://via.placeholder.com/40" alt="Hiking" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-semibold text-gray-800">Hiking</p>
+                    <p class="text-gray-500 text-sm">It’s not going to happen</p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm">Wednesday, 9:12am</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
