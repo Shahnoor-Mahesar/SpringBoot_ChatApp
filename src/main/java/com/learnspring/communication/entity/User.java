@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.Binary;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Document(collection = "users")
 public class User implements UserDetails {
     @Indexed(unique=true)
     @NonNull
@@ -30,6 +32,8 @@ public class User implements UserDetails {
     private String fullname;
 
     private Binary profilePicture;
+
+    private UserStatus status;
 
     @Override
     public boolean isAccountNonExpired() {
