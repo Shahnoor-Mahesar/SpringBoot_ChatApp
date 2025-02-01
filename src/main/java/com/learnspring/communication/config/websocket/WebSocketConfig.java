@@ -12,6 +12,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws") // WebSocket endpoint
                 .setAllowedOrigins("*") // Allow cross-origin requests
+                .addInterceptors(new CustomHandshakeInterceptor())
                 .withSockJS(); // Enable SockJS fallback options
     }
 
