@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.bson.BsonBinary;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -85,6 +86,10 @@ public class UserService {
             e.printStackTrace();
             return false; // Error during file conversion
         }
+    }
+
+    public List<String> findAll() {
+        return userRepository.findAll().stream().map(User::getUsername).toList();
     }
 
 
