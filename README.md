@@ -30,7 +30,7 @@ This is a real-time chat application where users can register, log in, and start
 - **Spring Boot** - Backend framework for Java
 - **Thymeleaf** - Template engine for rendering HTML
 - **MongoDB** - NoSQL database for storing user data and chat messages
-- **Bootstrap** - CSS framework for responsive design
+- **Taiwlind** - CSS framework for responsive design
 - **WebSocket** - For real-time communication
 
 ## Setup and Installation
